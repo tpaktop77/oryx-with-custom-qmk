@@ -49,11 +49,11 @@ const uint16_t PROGMEM cmb_ctrl_del_gr[]  = { KC_A,    KC_E,           KC_I, COM
 const uint16_t PROGMEM cmb_ctrl_del_rus[] = { RU_EL,   RU_DE,          RU_ZHE, COMBO_END};
 
 
-const uint16_t PROGMEM cmb_ctrl_left_gr[]   = { KC_V,    KC_G,         KC_T, COMBO_END};
-const uint16_t PROGMEM cmb_ctrl_left_rus[]  = { RU_I,    RU_PE,        RU_VE, COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_left_gr[]   = { KC_V,    KC_G,         COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_left_rus[]  = { RU_I,    RU_PE,        RCOMBO_END};
 
-const uint16_t PROGMEM cmb_ctrl_right_gr[]  = { KC_K,    KC_Y,         KC_I, COMBO_END};
-const uint16_t PROGMEM cmb_ctrl_right_rus[] = { RU_TE,   RU_ER,        RU_ZHE, COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_right_gr[]  = { KC_K,    KC_Y,         COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_right_rus[] = { RU_TE,   RU_ER,        COMBO_END};
 
 
 // ============= Combos for Word Erase =============
