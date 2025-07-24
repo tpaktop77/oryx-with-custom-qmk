@@ -50,7 +50,7 @@ const uint16_t PROGMEM cmb_ctrl_del_rus[] = { RU_EL,   RU_DE,          RU_ZHE, C
 
 
 const uint16_t PROGMEM cmb_ctrl_left_gr[]   = { KC_V,    KC_G,         COMBO_END};
-const uint16_t PROGMEM cmb_ctrl_left_rus[]  = { RU_I,    RU_PE,        RCOMBO_END};
+const uint16_t PROGMEM cmb_ctrl_left_rus[]  = { RU_I,    RU_PE,        COMBO_END};
 
 const uint16_t PROGMEM cmb_ctrl_right_gr[]  = { KC_K,    KC_Y,         COMBO_END};
 const uint16_t PROGMEM cmb_ctrl_right_rus[] = { RU_TE,   RU_ER,        COMBO_END};
