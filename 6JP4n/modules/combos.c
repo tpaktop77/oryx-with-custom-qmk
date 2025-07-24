@@ -61,10 +61,10 @@ const uint16_t PROGMEM cmb_ctrl_right_rus[] = { RU_TE,   RU_ER,        COMBO_END
 const uint16_t PROGMEM cmb_worderase_grp[] = { KC_N,  KC_R,    KC_T,  KC_S, COMBO_END};
 const uint16_t PROGMEM cmb_worderase_rus[] = { RU_EF, RU_YERU, RU_VE, RU_A, COMBO_END};
 
-const uint16_t PROGMEM cmb_smile_grp[] = { KC_B,            KC_Z, COMBO_END};
-const uint16_t PROGMEM cmb_smile_rus[] = { RU_SHTI,         RU_IE, COMBO_END};
+const uint16_t PROGMEM cmb_smile_grp[] = { KC_G,          KC_Z, COMBO_END};
+const uint16_t PROGMEM cmb_smile_rus[] = { RU_PE,         RU_IE, COMBO_END};
 
-const uint16_t PROGMEM cmb_vim_grp[] = { KC_Y,            KC_I, COMBO_END};
+const uint16_t PROGMEM cmb_vim_grp[] = { KC_H,            KC_I, COMBO_END};
 
 const uint16_t PROGMEM combo_alt_tab_grp[] = { KC_H, KC_A,  KC_E,  KC_I, COMBO_END };
 const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O, RU_EL, RU_DE, RU_ZHE, COMBO_END };
