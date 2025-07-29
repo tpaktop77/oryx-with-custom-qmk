@@ -135,15 +135,15 @@ combo_t key_combos[] = {
     COMBO(cmb_tab_gr, KC_TAB),
     COMBO(cmb_tab_ru, KC_TAB),
 
-    COMBO(cmb_ctrl_bs_gr, C(KC_BSPC)),
-    COMBO(cmb_ctrl_bs_ru, C(KC_BSPC)),
-    COMBO(cmb_ctrl_del_gr, C(KC_DELETE)),
-    COMBO(cmb_ctrl_del_ru, C(KC_DELETE)),
+    COMBO(cmb_ctrl_bs_gr, WORD_BS),
+    COMBO(cmb_ctrl_bs_ru, WORD_BS),
+    COMBO(cmb_ctrl_del_gr, WORD_DEL),
+    COMBO(cmb_ctrl_del_ru, WORD_DEL),
 
-    COMBO(cmb_ctrl_left_gr, C(KC_LEFT)),
-    COMBO(cmb_ctrl_left_ru, C(KC_LEFT)),
-    COMBO(cmb_ctrl_right_gr, C(KC_RIGHT)),
-    COMBO(cmb_ctrl_right_ru, C(KC_RIGHT)),
+    COMBO(cmb_ctrl_left_gr, WORD_PREV),
+    COMBO(cmb_ctrl_left_ru, WORD_PREV),
+    COMBO(cmb_ctrl_right_gr, WORD_NEXT),
+    COMBO(cmb_ctrl_right_ru, WORD_NEXT),
 
     COMBO(cmb_worderase_gr, C(KC_BSPC)),
     COMBO(cmb_worderase_ru, C(KC_BSPC)),
