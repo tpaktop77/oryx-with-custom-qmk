@@ -166,16 +166,16 @@
                 os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     register_code(KC_LALT);
-                    tap_code(KC_LEFT);
+                    tap_code(KC_RIGHT);
                     unregister_code(KC_LALT);
                 } else {
                     register_code(KC_LEFT_CTRL);
-                    tap_code(KC_LEFT);
+                    tap_code(KC_RIGHT);
                     unregister_code(KC_LEFT_CTRL);
                 }
 #endif
                 register_code(KC_LEFT_CTRL);
-                tap_code(KC_LEFT);
+                tap_code(KC_RIGHT);
                 unregister_code(KC_LEFT_CTRL);
             }
             return false;
