@@ -26,11 +26,11 @@ const uint16_t PROGMEM cmb_cut_ru[]   = { RU_YERU, RU_TSE, RU_VE,  RU_U, COMBO_E
 
 // ============= Combos for OS Aware Undo/Redo/Voice =============
 
-const uint16_t PROGMEM cmb_undo_gr[]  = { KC_P,           KC_F22,         KC_F23, COMBO_END};
-const uint16_t PROGMEM cmb_undo_ru[]  = { RU_SOFT,        RU_BE,          RU_YU, COMBO_END};
+const uint16_t PROGMEM cmb_undo_gr[]  = { KC_A,         KC_O,             COMBO_END};
+const uint16_t PROGMEM cmb_undo_ru[]  = { RU_EL,        RU_SHA,           RU_YU, COMBO_END};
 
-const uint16_t PROGMEM cmb_redo_gr[]  = { KC_F22,         KC_F23,         KC_F24, COMBO_END};
-const uint16_t PROGMEM cmb_redo_ru[]  = { RU_BE,          RU_YU,          RU_YO, COMBO_END};
+const uint16_t PROGMEM cmb_redo_gr[]  = { KC_E,         KC_U,             COMBO_END};
+const uint16_t PROGMEM cmb_redo_ru[]  = { RU_DE,        RU_SHCH,          COMBO_END};
 
 const uint16_t PROGMEM cmb_voice_gr[] = { KC_Y,           KC_H,           KC_A, COMBO_END};
 const uint16_t PROGMEM cmb_voice_ru[] = { RU_ER,          RU_O,           RU_EL, COMBO_END};
@@ -49,11 +49,11 @@ const uint16_t PROGMEM cmb_ctrl_del_gr[]  = { KC_A,    KC_E,           KC_I, COM
 const uint16_t PROGMEM cmb_ctrl_del_ru[] = { RU_EL,   RU_DE,          RU_ZHE, COMBO_END};
 
 
-const uint16_t PROGMEM cmb_ctrl_left_gr[]   = { KC_M,           KC_C,           KC_V,        COMBO_END};
-const uint16_t PROGMEM cmb_ctrl_left_ru[]  = { RU_ES,          RU_EM,          RU_I,        COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_left_gr[]  = { KC_Q,           KC_X,           KC_M,        COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_left_ru[]  = { RU_YA,          RU_CHE,         RU_ES,       COMBO_END};
 
-const uint16_t PROGMEM cmb_ctrl_right_gr[]  = { KC_K,           KC_P,           KC_F22,      COMBO_END};
-const uint16_t PROGMEM cmb_ctrl_right_ru[] = { RU_TE,          RU_SOFT,        RU_BE,       COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_right_gr[] = { KC_F22,         KC_F23,         KC_F24,      COMBO_END};
+const uint16_t PROGMEM cmb_ctrl_right_ru[] = { RU_BE,          RU_YU,          RU_YO,       COMBO_END};
 
 
 // ============= Combos for Word Erase =============
@@ -61,16 +61,16 @@ const uint16_t PROGMEM cmb_ctrl_right_ru[] = { RU_TE,          RU_SOFT,        R
 const uint16_t PROGMEM cmb_worderase_gr[] = { KC_N,  KC_R,    KC_T,  KC_S, COMBO_END};
 const uint16_t PROGMEM cmb_worderase_ru[] = { RU_EF, RU_YERU, RU_VE, RU_A, COMBO_END};
 
-const uint16_t PROGMEM cmb_smile_gr[] = { KC_G,          KC_Z, COMBO_END};
-const uint16_t PROGMEM cmb_smile_ru[] = { RU_PE,         RU_IE, COMBO_END};
+const uint16_t PROGMEM cmb_smile_gr[]     = { KC_G,          KC_Z, COMBO_END};
+const uint16_t PROGMEM cmb_smile_ru[]     = { RU_PE,         RU_IE, COMBO_END};
 
-const uint16_t PROGMEM cmb_vim_gr[] = { KC_H,            KC_I, COMBO_END};
+const uint16_t PROGMEM cmb_vim_gr[]       = { KC_H,            KC_I, COMBO_END};
 
-const uint16_t PROGMEM combo_alt_tab_gr[] = { KC_H, KC_A,  KC_E,  KC_I, COMBO_END };
-const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O, RU_EL, RU_DE, RU_ZHE, COMBO_END };
+const uint16_t PROGMEM cmb_alt_tab_gr[]   = { KC_H, KC_A,  KC_E,  KC_I, COMBO_END };
+const uint16_t PROGMEM cmb_alt_tab_en[]  = { RU_O, RU_EL, RU_DE, RU_ZHE, COMBO_END };
 
-const uint16_t PROGMEM combo_select_all_gr[] = { KC_N,           KC_B, COMBO_END };
-const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMBO_END };
+const uint16_t PROGMEM cmb_select_all_gr[] = { KC_N,           KC_B, COMBO_END };
+const uint16_t PROGMEM cmb_select_all_en[] = { RU_EF,           RU_SHTI, COMBO_END };
 
 // ============= Combos for Windows/Alt/Shift/Ctrl + Gr Left/Right =============
 
@@ -153,11 +153,11 @@ combo_t key_combos[] = {
 
     COMBO(cmb_vim_gr, OSL(6)),
 
-    COMBO(combo_alt_tab_gr, ALT_TAB),
-    COMBO(combo_alt_tab_eng, ALT_TAB),
+    COMBO(cmb_alt_tab_gr, ALT_TAB),
+    COMBO(cmb_alt_tab_en, ALT_TAB),
 
-    COMBO(combo_select_all_gr, SELECT_ALL),
-    COMBO(combo_select_all_eng, SELECT_ALL),
+    COMBO(cmb_select_all_gr, SELECT_ALL),
+    COMBO(cmb_select_all_en, SELECT_ALL),
 
     COMBO(cmb_win_gr_left, KC_LEFT_GUI),
     COMBO(cmb_alt_gr_left, KC_LEFT_ALT),
