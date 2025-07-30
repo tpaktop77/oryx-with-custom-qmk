@@ -153,10 +153,11 @@
                     tap_code(KC_LEFT);
                     unregister_code(KC_LEFT_CTRL);
                 }
-#endif
+#else
                 register_code(KC_LEFT_CTRL);
                 tap_code(KC_LEFT);
                 unregister_code(KC_LEFT_CTRL);
+#endif
             }
             return false;
 
@@ -173,10 +174,11 @@
                     tap_code(KC_RIGHT);
                     unregister_code(KC_LEFT_CTRL);
                 }
-#endif
+#else
                 register_code(KC_LEFT_CTRL);
                 tap_code(KC_RIGHT);
                 unregister_code(KC_LEFT_CTRL);
+#endif
             }
             return false;
 
@@ -194,10 +196,11 @@
                     tap_code(KC_BSPC);
                     unregister_code(KC_LEFT_CTRL);
                 }
-#endif
+#else
                 register_code(KC_LEFT_CTRL);
                 tap_code(KC_BSPC);
                 unregister_code(KC_LEFT_CTRL);
+#endif
             }
             return false;
 
@@ -214,9 +217,10 @@
                     tap_code(KC_DELETE);
                     unregister_code(KC_LEFT_CTRL);
                 }
-#endif
+#else
                 register_code(KC_LEFT_CTRL);
                 tap_code(KC_DELETE);
                 unregister_code(KC_LEFT_CTRL);
+#endif
             }
             return false;
