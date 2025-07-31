@@ -153,8 +153,8 @@ combo_t key_combos[] = {
     COMBO(cmb_alt_tab_gr, ALT_TAB),
     COMBO(cmb_alt_tab_en, ALT_TAB),
 
-    COMBO(cmb_alt_win_gr, G(ALT_TAB)),
-    COMBO(cmb_alt_win_ru, G(ALT_TAB)),
+    COMBO(cmb_alt_win_gr, G(KC_TAB)),
+    COMBO(cmb_alt_win_ru, G(KC_TAB)),
 
     COMBO(cmb_select_all_gr, SELECT_ALL),
     COMBO(cmb_select_all_en, SELECT_ALL),
