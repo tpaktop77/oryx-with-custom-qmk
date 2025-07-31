@@ -118,10 +118,11 @@
                     tap_code(KC_TAB);
                     unregister_code(KC_LALT);
                 }
-#endif
+#else
                 register_code(KC_LALT);
                 tap_code(KC_TAB);
                 unregister_code(KC_LALT);
+#endif
             }
             return false;
 
