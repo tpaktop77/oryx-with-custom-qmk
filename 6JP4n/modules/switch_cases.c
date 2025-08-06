@@ -126,6 +126,28 @@
             }
             return false;
 
+        case ALT_WIN:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LEFT_CTRL);
+                    tap_code(KC_UP);
+                    unregister_code(KC_LEFT_CTRL);
+                } else {
+                    register_code(KC_LGUI);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LGUI);
+                }
+#else
+                register_code(KC_LGUI);
+                tap_code(KC_TAB);
+                unregister_code(KC_LGUI);
+#endif
+            }
+            return false;
+
+
     case SELECT_ALL:
       if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
