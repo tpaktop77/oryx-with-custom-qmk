@@ -58,10 +58,14 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
+#define DUAL_FUNC_0 LT(4, KC_U)
+#define DUAL_FUNC_1 LT(4, KC_F13)
+#define DUAL_FUNC_2 LT(4, KC_J)
+#define DUAL_FUNC_3 LT(14, KC_8)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    KC_ESCAPE,      LALT(LCTL(KC_1)),LALT(LCTL(KC_2)),LALT(LCTL(KC_3)),LALT(LCTL(KC_4)),TD(DANCE_0),                                    TD(DANCE_1),    AS_DOWN,        AS_TOGG,        AS_UP,          AS_RPT,         AS_OFF,         
+    KC_ESCAPE,      DUAL_FUNC_0,    DUAL_FUNC_1,    DUAL_FUNC_2,    DUAL_FUNC_3,    TD(DANCE_0),                                    TD(DANCE_1),    AS_DOWN,        AS_TOGG,        AS_UP,          AS_RPT,         AS_OFF,         
     KC_TRANSPARENT, KC_B,           KC_L,           KC_D,           KC_W,           KC_Z,                                           KC_NUM,         KC_F,           KC_O,           KC_U,           KC_J,           KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_N,           KC_R,           KC_T,           KC_S,           KC_G,                                           KC_Y,           KC_H,           KC_A,           KC_E,           KC_I,           KC_TRANSPARENT, 
     TT(1),          KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,                                           KC_K,           KC_P,           KC_F22,         KC_F23,         KC_F24,         TT(2),          
@@ -142,7 +146,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
+
 extern rgb_config_t rgb_matrix_config;
+
+RGB hsv_to_rgb_with_value(HSV hsv) {
+  RGB rgb = hsv_to_rgb( hsv );
+  float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+  return (RGB){ f * rgb.r, f * rgb.g, f * rgb.b };
+}
 
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
@@ -173,9 +184,8 @@ void set_layer_color(int layer) {
     if (!hsv.h && !hsv.s && !hsv.v) {
         rgb_matrix_set_color( i, 0, 0, 0 );
     } else {
-        RGB rgb = hsv_to_rgb( hsv );
-        float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-        rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+        RGB rgb = hsv_to_rgb_with_value(hsv);
+        rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
     }
   }
 }
@@ -184,7 +194,7 @@ bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
       return false;
   }
-  if (keyboard_config.disable_layer_led) { return false; }
+    if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case 2:
       set_layer_color(2);
@@ -205,10 +215,11 @@ bool rgb_matrix_indicators_user(void) {
       set_layer_color(8);
       break;
    default:
-    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
-      rgb_matrix_set_color_all(0, 0, 0);
-    break;
+      if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
+        rgb_matrix_set_color_all(0, 0, 0);
+      }
   }
+
   return true;
 }
 
@@ -403,6 +414,66 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MAC_SIRI:
       HCS(0xCF);
 
+    case DUAL_FUNC_0:
+      if (record->tap.count > 0) {
+        if (record->event.pressed) {
+          register_code16(KC_NUM);
+        } else {
+          unregister_code16(KC_NUM);
+        }
+      } else {
+        if (record->event.pressed) {
+          register_code16(LALT(LCTL(KC_1)));
+        } else {
+          unregister_code16(LALT(LCTL(KC_1)));
+        }  
+      }  
+      return false;
+    case DUAL_FUNC_1:
+      if (record->tap.count > 0) {
+        if (record->event.pressed) {
+          register_code16(KC_NUM);
+        } else {
+          unregister_code16(KC_NUM);
+        }
+      } else {
+        if (record->event.pressed) {
+          register_code16(LALT(LCTL(KC_2)));
+        } else {
+          unregister_code16(LALT(LCTL(KC_2)));
+        }  
+      }  
+      return false;
+    case DUAL_FUNC_2:
+      if (record->tap.count > 0) {
+        if (record->event.pressed) {
+          register_code16(KC_NUM);
+        } else {
+          unregister_code16(KC_NUM);
+        }
+      } else {
+        if (record->event.pressed) {
+          register_code16(LALT(LCTL(KC_3)));
+        } else {
+          unregister_code16(LALT(LCTL(KC_3)));
+        }  
+      }  
+      return false;
+    case DUAL_FUNC_3:
+      if (record->tap.count > 0) {
+        if (record->event.pressed) {
+          register_code16(KC_NUM);
+        } else {
+          unregister_code16(KC_NUM);
+        }
+      } else {
+        if (record->event.pressed) {
+          register_code16(LALT(LCTL(KC_4)));
+        } else {
+          unregister_code16(LALT(LCTL(KC_4)));
+        }  
+      }  
+      return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
