@@ -5,10 +5,10 @@
   OS_AWARE_UNDO,
   OS_AWARE_REDO,
   OS_AWARE_VOICE,
-  OS_SHFT,
-  OS_CTRL,
-  OS_ALT,
-  OS_CMD,
   ALT_TAB,
-  SW_WIN,  // Switch to next window         (alt-tab)
-  SW_TAB,  // Switch to next browser tab    (ctrl-tab)
+  ALT_WIN,
+  SELECT_ALL,
+  WORD_PREV,
+  WORD_NEXT,
+  WORD_BS,
+  WORD_DEL,

@@ -5,6 +5,7 @@
 #ifndef ZSA_SAFE_RANGE
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
+#include "./modules/define.c"
 
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
@@ -49,6 +50,7 @@ enum custom_keycodes {
   ST_MACRO_35,
   ST_MACRO_36,
   MAC_SIRI,
+  #include "./modules/custom_keycodes.c"
 };
 
 
@@ -191,7 +193,7 @@ bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
       return false;
   }
-    if (keyboard_config.disable_layer_led) { return false; }
+  if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case 2:
       set_layer_color(2);
@@ -213,16 +215,16 @@ bool rgb_matrix_indicators_user(void) {
       break;
    default:
       if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
-        rgb_matrix_set_color_all(0, 0, 0);
-      }
+      rgb_matrix_set_color_all(0, 0, 0);
+  }
   }
 
   return true;
 }
 
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    #include "./modules/switch_cases.c"
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
@@ -528,4 +530,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-
+#include "./modules/combos.c"

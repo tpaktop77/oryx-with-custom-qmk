@@ -96,17 +96,154 @@
                 os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(MAC_SIRI);
-                } else if (host_os == OS_WINDOWS) {
+                } else  {
                     SEND_STRING(SS_LGUI("h"));
                 }
+#else
+            SEND_STRING(SS_LGUI("h"));
 #endif
             }
             return false;
 
-   case ALT_TAB:
-     if (record->event.pressed) {
-         register_code(KC_LALT);
-         tap_code(KC_TAB);
-         unregister_code(KC_LALT);
-     }
-     return false;
+        case ALT_TAB:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LGUI);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LGUI);
+                } else {
+                    register_code(KC_LALT);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LALT);
+                }
+#else
+                register_code(KC_LALT);
+                tap_code(KC_TAB);
+                unregister_code(KC_LALT);
+#endif
+            }
+            return false;
+
+        case ALT_WIN:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LEFT_CTRL);
+                    tap_code(KC_UP);
+                    unregister_code(KC_LEFT_CTRL);
+                } else {
+                    register_code(KC_LGUI);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LGUI);
+                }
+#else
+                register_code(KC_LGUI);
+                tap_code(KC_TAB);
+                unregister_code(KC_LGUI);
+#endif
+            }
+            return false;
+
+
+    case SELECT_ALL:
+      if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+        os_variant_t host_os = detected_host_os();
+        if (host_os == OS_MACOS || host_os == OS_IOS) {
+          SEND_STRING(SS_LGUI("a"));
+        } else {
+          SEND_STRING(SS_LCTL("a"));
+        }
+#else
+        SEND_STRING(SS_LCTL("a"));
+#endif
+      }
+      return false;
+
+        case WORD_PREV:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LALT);
+                    tap_code(KC_LEFT);
+                    unregister_code(KC_LALT);
+                } else {
+                    register_code(KC_LEFT_CTRL);
+                    tap_code(KC_LEFT);
+                    unregister_code(KC_LEFT_CTRL);
+                }
+#else
+                register_code(KC_LEFT_CTRL);
+                tap_code(KC_LEFT);
+                unregister_code(KC_LEFT_CTRL);
+#endif
+            }
+            return false;
+
+        case WORD_NEXT:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LALT);
+                    tap_code(KC_RIGHT);
+                    unregister_code(KC_LALT);
+                } else {
+                    register_code(KC_LEFT_CTRL);
+                    tap_code(KC_RIGHT);
+                    unregister_code(KC_LEFT_CTRL);
+                }
+#else
+                register_code(KC_LEFT_CTRL);
+                tap_code(KC_RIGHT);
+                unregister_code(KC_LEFT_CTRL);
+#endif
+            }
+            return false;
+
+
+        case WORD_BS:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LALT);
+                    tap_code(KC_BSPC);
+                    unregister_code(KC_LALT);
+                } else {
+                    register_code(KC_LEFT_CTRL);
+                    tap_code(KC_BSPC);
+                    unregister_code(KC_LEFT_CTRL);
+                }
+#else
+                register_code(KC_LEFT_CTRL);
+                tap_code(KC_BSPC);
+                unregister_code(KC_LEFT_CTRL);
+#endif
+            }
+            return false;
+
+        case WORD_DEL:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                os_variant_t host_os = detected_host_os();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LALT);
+                    tap_code(KC_DELETE);
+                    unregister_code(KC_LALT);
+                } else {
+                    register_code(KC_LEFT_CTRL);
+                    tap_code(KC_DELETE);
+                    unregister_code(KC_LEFT_CTRL);
+                }
+#else
+                register_code(KC_LEFT_CTRL);
+                tap_code(KC_DELETE);
+                unregister_code(KC_LEFT_CTRL);
+#endif
+            }
+            return false;
