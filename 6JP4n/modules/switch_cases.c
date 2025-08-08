@@ -95,7 +95,8 @@
 #if defined(OS_DETECTION_ENABLE)
                 os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(MAC_SIRI);
+                    //tap_code16(MAC_SIRI);
+                    HCS(0xCF);
                 } else  {
                     SEND_STRING(SS_LGUI("h"));
                 }
