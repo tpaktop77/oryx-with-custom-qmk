@@ -5,7 +5,7 @@
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define AUTO_SHIFT_TIMEOUT 200
 #define NO_AUTO_SHIFT_NUMERIC
-#define SERIAL_NUMBER "6JP4n/eaBX9K"
+#define SERIAL_NUMBER "6JP4n/0WLw9P"
 #define LAYER_STATE_16BIT
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 

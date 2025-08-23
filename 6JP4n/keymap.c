@@ -55,18 +55,18 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(5, KC_H)
-#define DUAL_FUNC_1 LT(8, KC_F24)
-#define DUAL_FUNC_2 LT(15, KC_F6)
-#define DUAL_FUNC_3 LT(15, KC_F22)
-#define DUAL_FUNC_4 LT(12, KC_F2)
-#define DUAL_FUNC_5 LT(1, KC_F15)
+#define DUAL_FUNC_0 LT(11, KC_F3)
+#define DUAL_FUNC_1 LT(11, KC_F16)
+#define DUAL_FUNC_2 LT(15, KC_F13)
+#define DUAL_FUNC_3 LT(1, KC_F11)
+#define DUAL_FUNC_4 LT(4, KC_F4)
+#define DUAL_FUNC_5 LT(9, KC_F13)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_ESCAPE,      DUAL_FUNC_0,    DUAL_FUNC_1,    DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,                                    DUAL_FUNC_5,    AS_DOWN,        AS_TOGG,        AS_UP,          AS_RPT,         AS_OFF,         
-    KC_TRANSPARENT, KC_B,           KC_L,           KC_D,           KC_W,           KC_Z,                                           KC_NUM,         KC_F,           KC_O,           KC_U,           KC_J,           KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_N,           KC_R,           KC_T,           KC_S,           KC_G,                                           KC_Y,           KC_H,           KC_A,           KC_E,           KC_I,           KC_TRANSPARENT, 
+    KC_MS_BTN1,     KC_B,           KC_L,           KC_D,           KC_W,           KC_Z,                                           KC_NUM,         KC_F,           KC_O,           KC_U,           KC_J,           KC_TRANSPARENT, 
+    KC_MS_BTN2,     KC_N,           KC_R,           KC_T,           KC_S,           KC_G,                                           KC_Y,           KC_H,           KC_A,           KC_E,           KC_I,           KC_TRANSPARENT, 
     TT(1),          KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,                                           KC_K,           KC_P,           KC_F22,         KC_F23,         KC_F24,         TT(2),          
                                                     LT(7, KC_BSPC), LT(3, KC_DELETE),                                LT(5, KC_TAB),  LT(4, KC_SPACE)
   ),
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ENTER,       KC_LABK,        KC_RABK,        KC_LPRN,        KC_RPRN,        KC_NO,                                          KC_EQUAL,       KC_7,           KC_8,           KC_9,           KC_NO,          KC_NO,          
     KC_TAB,         KC_LEFT_ALT,    KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_NO,                                          KC_NO,          KC_4,           KC_5,           KC_6,           KC_DOT,         KC_NO,          
     KC_NO,          KC_LCBR,        KC_RCBR,        KC_LBRC,        KC_RBRC,        KC_NO,                                          KC_DOT,         KC_1,           KC_2,           KC_3,           KC_NO,          KC_NO,          
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_0
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 LT(6, KC_TAB),  KC_0
   ),
   [4] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_NO,          QK_DYNAMIC_TAPPING_TERM_DOWN,KC_NO,          QK_DYNAMIC_TAPPING_TERM_UP,QK_DYNAMIC_TAPPING_TERM_PRINT,QK_BOOT,        
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ENTER,       KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_NO,          
     KC_TAB,         KC_LEFT_ALT,    KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_NO,                                          KC_NO,          KC_RIGHT_CTRL,  KC_RIGHT_SHIFT, KC_RIGHT_GUI,   KC_RIGHT_ALT,   KC_NO,          
     KC_NO,          KC_F11,         KC_F12,         KC_F13,         KC_F14,         KC_F15,                                         KC_F16,         KC_F17,         KC_F18,         KC_F19,         KC_F20,         KC_NO,          
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+                                                    KC_TRANSPARENT, LT(6, KC_DELETE),                                KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [6] = LAYOUT_voyager(
     KC_ESCAPE,      KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
@@ -193,34 +193,42 @@ bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
       return false;
   }
-    if (keyboard_config.disable_layer_led) { return false; }
-  switch (biton32(layer_state)) {
-    case 2:
-      set_layer_color(2);
-      break;
-    case 3:
-      set_layer_color(3);
-      break;
-    case 5:
-      set_layer_color(5);
-      break;
-    case 6:
-      set_layer_color(6);
-      break;
-    case 7:
-      set_layer_color(7);
-      break;
-    case 8:
-      set_layer_color(8);
-      break;
-   default:
-      if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
-        rgb_matrix_set_color_all(0, 0, 0);
-      }
+  if (!keyboard_config.disable_layer_led) { 
+    switch (biton32(layer_state)) {
+      case 2:
+        set_layer_color(2);
+        break;
+      case 3:
+        set_layer_color(3);
+        break;
+      case 5:
+        set_layer_color(5);
+        break;
+      case 6:
+        set_layer_color(6);
+        break;
+      case 7:
+        set_layer_color(7);
+        break;
+      case 8:
+        set_layer_color(8);
+        break;
+     default:
+        if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
+          rgb_matrix_set_color_all(0, 0, 0);
+        }
+    }
+  } else {
+    if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
+      rgb_matrix_set_color_all(0, 0, 0);
+    }
   }
 
   return true;
 }
+
+
+
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -532,4 +540,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #include "./modules/combos.c"
-
