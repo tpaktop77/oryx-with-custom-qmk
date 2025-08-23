@@ -27,7 +27,7 @@ const uint16_t PROGMEM cmb_cut_ru[]   = { RU_YERU, RU_TSE, RU_VE,  RU_U, COMBO_E
 // ============= Combos for OS Aware Undo/Redo/Voice =============
 
 const uint16_t PROGMEM cmb_undo_gr[]  = { KC_A,         KC_O,             COMBO_END};
-const uint16_t PROGMEM cmb_undo_ru[]  = { RU_EL,        RU_SHA,           RU_YU, COMBO_END};
+const uint16_t PROGMEM cmb_undo_ru[]  = { RU_EL,        RU_SHA,           COMBO_END};
 
 const uint16_t PROGMEM cmb_redo_gr[]  = { KC_E,         KC_U,             COMBO_END};
 const uint16_t PROGMEM cmb_redo_ru[]  = { RU_DE,        RU_SHCH,          COMBO_END};
