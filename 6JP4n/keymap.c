@@ -55,18 +55,18 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(9, KC_F24)
-#define DUAL_FUNC_1 LT(15, KC_F4)
-#define DUAL_FUNC_2 LT(4, KC_F21)
-#define DUAL_FUNC_3 LT(15, KC_9)
-#define DUAL_FUNC_4 LT(5, KC_5)
-#define DUAL_FUNC_5 LT(14, KC_M)
+#define DUAL_FUNC_0 LT(1, KC_F1)
+#define DUAL_FUNC_1 LT(12, KC_5)
+#define DUAL_FUNC_2 LT(6, KC_7)
+#define DUAL_FUNC_3 LT(1, KC_D)
+#define DUAL_FUNC_4 LT(15, KC_F12)
+#define DUAL_FUNC_5 LT(11, KC_F22)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    KC_ESCAPE,      DUAL_FUNC_0,    DUAL_FUNC_1,    DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,                                    DUAL_FUNC_5,    AS_DOWN,        AS_TOGG,        AS_UP,          AS_RPT,         AS_OFF,         
-    KC_MS_BTN1,     KC_B,           KC_L,           KC_D,           KC_W,           KC_Z,                                           KC_NUM,         KC_F,           KC_O,           KC_U,           KC_J,           KC_TRANSPARENT, 
-    KC_MS_BTN2,     KC_N,           KC_R,           KC_T,           KC_S,           KC_G,                                           KC_Y,           KC_H,           KC_A,           KC_E,           KC_I,           KC_TRANSPARENT, 
+    KC_ESCAPE,      DUAL_FUNC_0,    DUAL_FUNC_1,    DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,                                    DUAL_FUNC_5,    KC_MS_BTN3,     KC_MS_BTN1,     KC_MS_BTN2,     AS_OFF,         AS_ON,          
+    KC_MS_BTN2,     KC_B,           KC_L,           KC_D,           KC_W,           KC_Z,                                           KC_NUM,         KC_F,           KC_O,           KC_U,           KC_J,           KC_TRANSPARENT, 
+    KC_MS_BTN1,     KC_N,           KC_R,           KC_T,           KC_S,           KC_G,                                           KC_Y,           KC_H,           KC_A,           KC_E,           KC_I,           KC_TRANSPARENT, 
     TT(1),          KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,                                           KC_K,           KC_P,           KC_F22,         KC_F23,         KC_F24,         TT(2),          
                                                     LT(7, KC_BSPC), LT(3, KC_DELETE),                                LT(5, KC_TAB),  LT(4, KC_SPACE)
   ),
@@ -440,9 +440,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_1:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_NUM);
+          register_code16(KC_MS_BTN2);
         } else {
-          unregister_code16(KC_NUM);
+          unregister_code16(KC_MS_BTN2);
         }
       } else {
         if (record->event.pressed) {
@@ -455,9 +455,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_2:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_NUM);
+          register_code16(KC_MS_BTN1);
         } else {
-          unregister_code16(KC_NUM);
+          unregister_code16(KC_MS_BTN1);
         }
       } else {
         if (record->event.pressed) {
@@ -470,9 +470,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_3:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_NUM);
+          register_code16(KC_MS_BTN3);
         } else {
-          unregister_code16(KC_NUM);
+          unregister_code16(KC_MS_BTN3);
         }
       } else {
         if (record->event.pressed) {
