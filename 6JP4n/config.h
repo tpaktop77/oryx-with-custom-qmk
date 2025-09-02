@@ -5,10 +5,14 @@
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define AUTO_SHIFT_TIMEOUT 200
 #define NO_AUTO_SHIFT_NUMERIC
-#define SERIAL_NUMBER "6JP4n/wOxOgo"
 #define LAYER_STATE_16BIT
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
+#define MOUSE_EXTENDED_REPORT
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+#define AUTO_MOUSE_DEFAULT_LAYER 11
+#define AUTO_MOUSE_TIME 1000
+#define NAVIGATOR_SCROLL_DIVIDER 24
 #define RGB_MATRIX_STARTUP_SPD 60
 
 #undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT

@@ -49,16 +49,22 @@ enum custom_keycodes {
   ST_MACRO_35,
   ST_MACRO_36,
   MAC_SIRI,
+  DRAG_SCROLL,
+  TOGGLE_SCROLL,
+  NAVIGATOR_INC_CPI,
+  NAVIGATOR_DEC_CPI,
+  NAVIGATOR_TURBO,
+  NAVIGATOR_AIM
 };
 
 
 
-#define DUAL_FUNC_0 LT(1, KC_F1)
-#define DUAL_FUNC_1 LT(12, KC_5)
-#define DUAL_FUNC_2 LT(6, KC_7)
-#define DUAL_FUNC_3 LT(1, KC_D)
-#define DUAL_FUNC_4 LT(15, KC_F12)
-#define DUAL_FUNC_5 LT(11, KC_F22)
+#define DUAL_FUNC_0 LT(14, KC_F24)
+#define DUAL_FUNC_1 LT(14, KC_S)
+#define DUAL_FUNC_2 LT(7, KC_F7)
+#define DUAL_FUNC_3 LT(7, KC_F15)
+#define DUAL_FUNC_4 LT(10, KC_P)
+#define DUAL_FUNC_5 LT(3, KC_F24)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -138,6 +144,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
+  [11] = LAYOUT_voyager(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_LLCK,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, TOGGLE_SCROLL,  KC_MS_BTN3,     KC_MS_BTN2,     KC_MS_BTN1,     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3,     TOGGLE_SCROLL,  KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                                                    DRAG_SCROLL,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+  ),
 };
 
 
@@ -188,9 +201,6 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (rawhid_state.rgb_control) {
-      return false;
-  }
   if (!keyboard_config.disable_layer_led) { 
     switch (biton32(layer_state)) {
       case 2:
@@ -225,6 +235,21 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
+extern bool set_scrolling;
+extern bool navigator_turbo;
+extern bool navigator_aim;
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true);
+}
+bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
+  switch (keycode) {
+    case NAVIGATOR_INC_CPI ... NAVIGATOR_AIM:
+    case DRAG_SCROLL:
+    case TOGGLE_SCROLL:
+      return true;
+  }
+  return is_mouse_record_user(keycode, record);
+}
 
 
 
@@ -509,6 +534,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }  
       }  
       return false;
+    case DRAG_SCROLL:
+      if (record->event.pressed) {
+        set_scrolling = true;
+      } else {
+        set_scrolling = false;
+      }
+      return false;
+    case TOGGLE_SCROLL:
+      if (record->event.pressed) {
+        set_scrolling = !set_scrolling;
+      }
+      return false;
+    break;
+  case NAVIGATOR_TURBO:
+    if (record->event.pressed) {
+      navigator_turbo = true;
+    } else {
+      navigator_turbo = false;
+    }
+    return false;
+  case NAVIGATOR_AIM:
+    if (record->event.pressed) {
+      navigator_aim = true;
+    } else {
+      navigator_aim = false;
+    }
+    return false;
+  case NAVIGATOR_INC_CPI:
+    if (record->event.pressed) {
+        pointing_device_set_cpi(1);
+    }
+    return false;
+  case NAVIGATOR_DEC_CPI:
+    if (record->event.pressed) {
+        pointing_device_set_cpi(0);
+    }
+    return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
