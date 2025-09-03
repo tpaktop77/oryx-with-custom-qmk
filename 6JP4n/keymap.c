@@ -61,12 +61,12 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(9, KC_F12)
-#define DUAL_FUNC_1 LT(13, KC_W)
-#define DUAL_FUNC_2 LT(10, KC_F24)
-#define DUAL_FUNC_3 LT(9, KC_N)
-#define DUAL_FUNC_4 LT(6, KC_7)
-#define DUAL_FUNC_5 LT(5, KC_F17)
+#define DUAL_FUNC_0 LT(5, KC_F10)
+#define DUAL_FUNC_1 LT(1, KC_B)
+#define DUAL_FUNC_2 LT(12, KC_F16)
+#define DUAL_FUNC_3 LT(12, KC_3)
+#define DUAL_FUNC_4 LT(8, KC_7)
+#define DUAL_FUNC_5 LT(12, KC_H)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, TOGGLE_SCROLL,  KC_MS_BTN3,     KC_MS_BTN2,     KC_MS_BTN1,     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3,     TOGGLE_SCROLL,  KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,KC_TRANSPARENT, QK_LLCK,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,KC_TRANSPARENT, QK_LLCK,                                        QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     DRAG_SCROLL,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
@@ -203,6 +203,9 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
+  if (rawhid_state.rgb_control) {
+      return false;
+  }
   if (!keyboard_config.disable_layer_led) { 
     switch (biton32(layer_state)) {
       case 2:
