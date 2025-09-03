@@ -59,12 +59,12 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(5, KC_F10)
-#define DUAL_FUNC_1 LT(1, KC_B)
-#define DUAL_FUNC_2 LT(12, KC_F16)
-#define DUAL_FUNC_3 LT(12, KC_3)
-#define DUAL_FUNC_4 LT(8, KC_7)
-#define DUAL_FUNC_5 LT(12, KC_H)
+#define DUAL_FUNC_0 LT(11, KC_Y)
+#define DUAL_FUNC_1 LT(11, KC_1)
+#define DUAL_FUNC_2 LT(12, KC_F17)
+#define DUAL_FUNC_3 LT(9, KC_F8)
+#define DUAL_FUNC_4 LT(3, KC_K)
+#define DUAL_FUNC_5 LT(10, KC_F16)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 LT(6, KC_TAB),  KC_0
   ),
   [4] = LAYOUT_voyager(
-    RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_NO,          QK_DYNAMIC_TAPPING_TERM_DOWN,KC_NO,          QK_DYNAMIC_TAPPING_TERM_UP,QK_DYNAMIC_TAPPING_TERM_PRINT,QK_BOOT,        
+    RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        EE_CLR,         QK_DYNAMIC_TAPPING_TERM_DOWN,KC_NO,          QK_DYNAMIC_TAPPING_TERM_UP,QK_DYNAMIC_TAPPING_TERM_PRINT,QK_BOOT,        
     KC_ENTER,       KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,MAC_SIRI,                                       KC_PAGE_UP,     KC_HOME,        KC_UP,          KC_END,         KC_NO,          LCTL(KC_W),     
     KC_TAB,         KC_LEFT_ALT,    KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_AUDIO_MUTE,                                  KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_NO,          LCTL(KC_T),     
     KC_NO,          KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_NO,          LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   LGUI(LCTL(KC_LEFT)),LGUI(LCTL(KC_RIGHT)),KC_INSERT,      
