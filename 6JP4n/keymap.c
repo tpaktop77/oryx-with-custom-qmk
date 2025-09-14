@@ -59,12 +59,12 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(4, KC_F10)
-#define DUAL_FUNC_1 LT(12, KC_S)
-#define DUAL_FUNC_2 LT(10, KC_3)
-#define DUAL_FUNC_3 LT(9, KC_R)
-#define DUAL_FUNC_4 LT(9, KC_K)
-#define DUAL_FUNC_5 LT(11, KC_4)
+#define DUAL_FUNC_0 LT(15, KC_1)
+#define DUAL_FUNC_1 LT(13, KC_B)
+#define DUAL_FUNC_2 LT(3, KC_V)
+#define DUAL_FUNC_3 LT(11, KC_F2)
+#define DUAL_FUNC_4 LT(6, KC_F19)
+#define DUAL_FUNC_5 LT(5, KC_F8)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -147,8 +147,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [11] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, TOGGLE_SCROLL,  QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, QK_LLCK,        TOGGLE_SCROLL,  KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, DRAG_SCROLL,    KC_MS_BTN3,     KC_MS_BTN2,     KC_MS_BTN1,     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_BTN3,     DRAG_SCROLL,    KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_MS_BTN3,     DRAG_SCROLL,    KC_MS_BTN2,     KC_MS_BTN1,     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     DRAG_SCROLL,    KC_MS_BTN3,     KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_MS_BTN6,     KC_MS_BTN5,     KC_MS_BTN4,     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, NAVIGATOR_INC_CPI,NAVIGATOR_DEC_CPI,KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
@@ -182,7 +182,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [8] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {43,255,255}, {43,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {51,255,255}, {0,0,0}, {51,255,255}, {51,255,255}, {0,0,0}, {0,0,0}, {51,255,255}, {51,255,255}, {51,255,255}, {51,255,255}, {51,255,255}, {0,0,0}, {0,0,0}, {51,255,255}, {51,255,255}, {51,255,255}, {51,255,255}, {51,255,255}, {0,0,0}, {51,255,255}, {51,255,255}, {51,255,255}, {51,255,255}, {0,0,0}, {0,0,0}, {0,0,0} },
 
-    [11] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,218,204}, {0,0,0}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,255}, {0,0,0}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,255}, {0,0,0}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,255}, {0,0,255}, {0,218,204}, {0,218,204}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,255}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,0}, {0,0,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,218,204}, {0,0,255} },
+    [11] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,218,204}, {0,0,0}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,255}, {0,0,0}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,255}, {0,0,0}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,255}, {0,0,255}, {0,218,204}, {0,218,204}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,255}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,0}, {0,0,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,255}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,0}, {0,218,204}, {0,0,255} },
 
 };
 
@@ -264,6 +264,22 @@ bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+  case QK_MODS ... QK_MODS_MAX: 
+    // Mouse keys with modifiers work inconsistently across operating systems, this makes sure that modifiers are always
+    // applied to the mouse key that was pressed.
+    if (IS_MOUSE_KEYCODE(QK_MODS_GET_BASIC_KEYCODE(keycode))) {
+    if (record->event.pressed) {
+        add_mods(QK_MODS_GET_MODS(keycode));
+        send_keyboard_report();
+        wait_ms(2);
+        register_code(QK_MODS_GET_BASIC_KEYCODE(keycode));
+        return false;
+      } else {
+        wait_ms(2);
+        del_mods(QK_MODS_GET_MODS(keycode));
+      }
+    }
+    break;
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
