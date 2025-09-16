@@ -5,7 +5,6 @@
 #ifndef ZSA_SAFE_RANGE
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
-#include "./modules/define.c"
 
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
@@ -55,8 +54,7 @@ enum custom_keycodes {
   NAVIGATOR_INC_CPI,
   NAVIGATOR_DEC_CPI,
   NAVIGATOR_TURBO,
-  NAVIGATOR_AIM,
-  #include "./modules/custom_keycodes.c"
+  NAVIGATOR_AIM
 };
 
 
@@ -266,7 +264,6 @@ bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-  #include "./modules/switch_cases.c"
   case QK_MODS ... QK_MODS_MAX: 
     // Mouse keys with modifiers work inconsistently across operating systems, this makes sure that modifiers are always
     // applied to the mouse key that was pressed.
@@ -624,5 +621,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
-#include "./modules/combos.c"
