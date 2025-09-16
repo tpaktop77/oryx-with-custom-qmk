@@ -5,6 +5,7 @@
 #ifndef ZSA_SAFE_RANGE
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
+#include "./modules/define.c"
 
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
@@ -55,6 +56,7 @@ enum custom_keycodes {
   NAVIGATOR_DEC_CPI,
   NAVIGATOR_TURBO,
   NAVIGATOR_AIM
+  #include "./modules/custom_keycodes.c"
 };
 
 
@@ -280,6 +282,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
     break;
+    #include "./modules/switch_cases.c"
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
@@ -621,3 +624,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+#include "./modules/combos.c"
