@@ -55,7 +55,7 @@ enum custom_keycodes {
   NAVIGATOR_INC_CPI,
   NAVIGATOR_DEC_CPI,
   NAVIGATOR_TURBO,
-  NAVIGATOR_AIM
+  NAVIGATOR_AIM,
   #include "./modules/custom_keycodes.c"
 };
 
