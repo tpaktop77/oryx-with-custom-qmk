@@ -61,12 +61,12 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(13, KC_T)
-#define DUAL_FUNC_1 LT(14, KC_F9)
-#define DUAL_FUNC_2 LT(15, KC_G)
-#define DUAL_FUNC_3 LT(8, KC_9)
-#define DUAL_FUNC_4 LT(13, KC_F24)
-#define DUAL_FUNC_5 LT(7, KC_F12)
+#define DUAL_FUNC_0 LT(14, KC_F2)
+#define DUAL_FUNC_1 LT(5, KC_F20)
+#define DUAL_FUNC_2 LT(1, KC_O)
+#define DUAL_FUNC_3 LT(14, KC_5)
+#define DUAL_FUNC_4 LT(7, KC_I)
+#define DUAL_FUNC_5 LT(15, KC_F9)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -256,12 +256,6 @@ bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
     case NAVIGATOR_INC_CPI ... NAVIGATOR_AIM:
     case DRAG_SCROLL:
     case TOGGLE_SCROLL:
-    case KC_MS_BTN3:
-    case KC_MS_BTN2:
-    case KC_MS_BTN1:
-    case KC_MS_BTN6:
-    case KC_MS_BTN4:
-    case KC_MS_BTN5:
       return true;
   }
   return is_mouse_record_user(keycode, record);
@@ -326,12 +320,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_7:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_3)SS_DELAY(1)  SS_TAP(X_0));
+      SEND_STRING(SS_TAP(X_4)SS_DELAY(1)  SS_TAP(X_0));
     }
     break;
     case ST_MACRO_8:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_8)SS_DELAY(1)  SS_TAP(X_0)SS_DELAY(1)  SS_TAP(X_0));
+      SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_2)SS_DELAY(1)  SS_TAP(X_0)SS_DELAY(1)  SS_TAP(X_0));
     }
     break;
     case ST_MACRO_9:
