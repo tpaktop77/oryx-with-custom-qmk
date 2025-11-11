@@ -33,9 +33,9 @@
 #define RU_HARD KC_RBRC
 #define RU_LPRN S(KC_9)
 #define RU_RPRN S(KC_0)
-#define RU_RUBL ALGR(KC_8)
 #define RU_ASTR S(KC_8)
 #define RU_PERC S(KC_5)
+#define RU_RUBL ALGR(KC_8)
 #define RU_NUM S(KC_3)
 #define RU_UNDS S(KC_MINS)
 #define RU_MINS KC_MINS
