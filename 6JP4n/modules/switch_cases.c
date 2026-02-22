@@ -13,50 +13,57 @@
     }
     return false;
 
-    case OS_AWARE_COPY:
-      if (record->event.pressed) {
-#if defined(OS_DETECTION_ENABLE)
-        os_variant_t host_os = detected_host_os();
-        if (host_os == OS_MACOS || host_os == OS_IOS) {
-          SEND_STRING(SS_LGUI("c"));
-        } else {
-          SEND_STRING(SS_LCTL("c"));
-        }
-#else
-        SEND_STRING(SS_LCTL("c"));
-#endif
-      }
-      return false;
 
-    case OS_AWARE_PASTE:
-      if (record->event.pressed) {
+case OS_AWARE_COPY:
+  if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
-        os_variant_t host_os = detected_host_os();
-        if (host_os == OS_MACOS || host_os == OS_IOS) {
-          SEND_STRING(SS_LGUI("v"));
-        } else {
-          SEND_STRING(SS_LCTL("v"));
-        }
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      SEND_STRING(SS_LGUI("c"));
+    } else if (host_os == OS_LINUX) {
+      tap_code16(C(KC_INS));   // Ctrl+Insert
+    } else {
+      SEND_STRING(SS_LCTL("c"));
+    }
 #else
-        SEND_STRING(SS_LCTL("v"));
+    SEND_STRING(SS_LCTL("c"));
 #endif
-      }
-      return false;
-    case OS_AWARE_CUT:
+  }
+  return false;
 
-      if (record->event.pressed) {
+case OS_AWARE_PASTE:
+  if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
-        os_variant_t host_os = detected_host_os();
-        if (host_os == OS_MACOS || host_os == OS_IOS) {
-          SEND_STRING(SS_LGUI("x"));
-        } else {
-          SEND_STRING(SS_LCTL("x"));
-        }
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      SEND_STRING(SS_LGUI("v"));
+    } else if (host_os == OS_LINUX) {
+      tap_code16(S(KC_INS));   // Shift+Insert
+    } else {
+      SEND_STRING(SS_LCTL("v"));
+    }
 #else
-        SEND_STRING(SS_LCTL("x"));
+    SEND_STRING(SS_LCTL("v"));
 #endif
-      }
-      return false;
+  }
+  return false;
+
+case OS_AWARE_CUT:
+  if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      SEND_STRING(SS_LGUI("x"));
+    } else if (host_os == OS_LINUX) {
+      tap_code16(S(KC_DEL));   // Shift+Delete
+    } else {
+      SEND_STRING(SS_LCTL("x"));
+    }
+#else
+    SEND_STRING(SS_LCTL("x"));
+#endif
+  }
+  return false;
 
     case OS_AWARE_UNDO:
 
