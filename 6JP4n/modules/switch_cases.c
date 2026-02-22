@@ -210,8 +210,6 @@ case WORD_BS:    // delete previous word (left)
     os_variant_t host_os = detected_host_os();
     if (host_os == OS_MACOS || host_os == OS_IOS) {
       tap_code16(A(KC_BSPC));     // macOS: Option+Backspace
-    } else if (host_os == OS_LINUX) {
-      tap_code16(C(KC_W));        // Linux terminal (readline): Ctrl+W
     } else {
       tap_code16(C(KC_BSPC));     // Windows/other: Ctrl+Backspace
     }
@@ -227,8 +225,6 @@ case WORD_DEL:   // delete next word (right)
     os_variant_t host_os = detected_host_os();
     if (host_os == OS_MACOS || host_os == OS_IOS) {
       tap_code16(A(KC_DEL));      // macOS: Option+Delete (forward delete)
-    } else if (host_os == OS_LINUX) {
-      tap_code16(A(KC_D));        // Linux terminal (readline): Alt+D
     } else {
       tap_code16(C(KC_DEL));      // Windows/other: Ctrl+Delete
     }
