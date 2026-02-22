@@ -171,87 +171,69 @@ case OS_AWARE_CUT:
       }
       return false;
 
-        case WORD_PREV:
-            if (record->event.pressed) {
-#if defined(OS_DETECTION_ENABLE)
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    register_code(KC_LALT);
-                    tap_code(KC_LEFT);
-                    unregister_code(KC_LALT);
-                } else {
-                    register_code(KC_LEFT_CTRL);
-                    tap_code(KC_LEFT);
-                    unregister_code(KC_LEFT_CTRL);
-                }
-#else
-                register_code(KC_LEFT_CTRL);
-                tap_code(KC_LEFT);
-                unregister_code(KC_LEFT_CTRL);
-#endif
-            }
-            return false;
-
-        case WORD_NEXT:
-            if (record->event.pressed) {
-#if defined(OS_DETECTION_ENABLE)
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    register_code(KC_LALT);
-                    tap_code(KC_RIGHT);
-                    unregister_code(KC_LALT);
-                } else {
-                    register_code(KC_LEFT_CTRL);
-                    tap_code(KC_RIGHT);
-                    unregister_code(KC_LEFT_CTRL);
-                }
-#else
-                register_code(KC_LEFT_CTRL);
-                tap_code(KC_RIGHT);
-                unregister_code(KC_LEFT_CTRL);
-#endif
-            }
-            return false;
 
 
-        case WORD_BS:
-            if (record->event.pressed) {
-#if defined(OS_DETECTION_ENABLE)
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    register_code(KC_LALT);
-                    tap_code(KC_BSPC);
-                    unregister_code(KC_LALT);
-                } else {
-                    register_code(KC_LEFT_CTRL);
-                    tap_code(KC_BSPC);
-                    unregister_code(KC_LEFT_CTRL);
-                }
-#else
-                register_code(KC_LEFT_CTRL);
-                tap_code(KC_BSPC);
-                unregister_code(KC_LEFT_CTRL);
-#endif
-            }
-            return false;
 
-        case WORD_DEL:
-            if (record->event.pressed) {
+case WORD_PREV:  // move to previous word (left)
+  if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    register_code(KC_LALT);
-                    tap_code(KC_DELETE);
-                    unregister_code(KC_LALT);
-                } else {
-                    register_code(KC_LEFT_CTRL);
-                    tap_code(KC_DELETE);
-                    unregister_code(KC_LEFT_CTRL);
-                }
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      tap_code16(A(KC_LEFT));     // macOS: Option+Left
+    } else {
+      tap_code16(C(KC_LEFT));     // Windows/Linux/other: Ctrl+Left
+    }
 #else
-                register_code(KC_LEFT_CTRL);
-                tap_code(KC_DELETE);
-                unregister_code(KC_LEFT_CTRL);
+    tap_code16(C(KC_LEFT));
 #endif
-            }
-            return false;
+  }
+  return false;
+
+case WORD_NEXT:  // move to next word (right)
+  if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      tap_code16(A(KC_RIGHT));    // macOS: Option+Right
+    } else {
+      tap_code16(C(KC_RIGHT));    // Windows/Linux/other: Ctrl+Right
+    }
+#else
+    tap_code16(C(KC_RIGHT));
+#endif
+  }
+  return false;
+
+case WORD_BS:    // delete previous word (left)
+  if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      tap_code16(A(KC_BSPC));     // macOS: Option+Backspace
+    } else if (host_os == OS_LINUX) {
+      tap_code16(C(KC_W));        // Linux terminal (readline): Ctrl+W
+    } else {
+      tap_code16(C(KC_BSPC));     // Windows/other: Ctrl+Backspace
+    }
+#else
+    tap_code16(C(KC_BSPC));
+#endif
+  }
+  return false;
+
+case WORD_DEL:   // delete next word (right)
+  if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+    os_variant_t host_os = detected_host_os();
+    if (host_os == OS_MACOS || host_os == OS_IOS) {
+      tap_code16(A(KC_DEL));      // macOS: Option+Delete (forward delete)
+    } else if (host_os == OS_LINUX) {
+      tap_code16(A(KC_D));        // Linux terminal (readline): Alt+D
+    } else {
+      tap_code16(C(KC_DEL));      // Windows/other: Ctrl+Delete
+    }
+#else
+    tap_code16(C(KC_DEL));
+#endif
+  }
+  return false;
