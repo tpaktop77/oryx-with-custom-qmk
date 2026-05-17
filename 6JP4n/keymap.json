@@ -1,6 +1,8 @@
 {
     "modules": [
         "zsa/oryx",
+        "zsa/navigator_trackball",
+        "zsa/automouse",
         "zsa/defaults"
     ]
 }
