@@ -107,8 +107,8 @@ combo_t key_combos[] = {
     COMBO(cmb_enter_gr, KC_ENTER),
     COMBO(cmb_enter_ru, KC_ENTER),
     COMBO(cmb_minus_num, KC_MINUS),
-    COMBO(cmb_plus_num, KC_PLUS),
-    COMBO(cmb_equal_num, KC_EQUAL),
+    COMBO(cmb_plus_num, KC_EQUAL),
+    COMBO(cmb_equal_num, KC_PLUS),
     COMBO(cmb_div_num, KC_SLASH),
     COMBO(cmb_mul_num, KC_ASTR),
 
