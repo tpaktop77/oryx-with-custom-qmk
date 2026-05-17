@@ -6,8 +6,8 @@ const uint16_t PROGMEM cmb_enter_ru[] = { RU_O,           RU_EL,          RU_DE,
 const uint16_t PROGMEM cmb_minus_num[] = { KC_7,           KC_8,           KC_9, COMBO_END};
 const uint16_t PROGMEM cmb_plus_num[]  = { KC_4,           KC_5,           KC_6, COMBO_END};
 const uint16_t PROGMEM cmb_equal_num[] = { KC_1,           KC_2,           KC_3, COMBO_END};
-const uint16_t PROGMEM cmb_div_num[]   = { KC_8,           KC_5,           COMBO_END};
-const uint16_t PROGMEM cmb_mul_num[]   = { KC_9,           KC_6,           COMBO_END};
+const uint16_t PROGMEM cmb_div_num[]   = { KC_4,           KC_5,           KC_6,           KC_DOT,   COMBO_END};
+const uint16_t PROGMEM cmb_mul_num[]   = { KC_1,           KC_2,           KC_3,           KC_EQUAL, COMBO_END};
 
 const uint16_t PROGMEM cmb_togg_gr[]  = { KC_N,           KC_S, COMBO_END};
 const uint16_t PROGMEM cmb_togg_ru[]  = { RU_EF,          RU_A, COMBO_END};
