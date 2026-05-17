@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: oryx
 
@@ -165,7 +165,7 @@ jobs:
 
       - name: Upload layout
         #if: github.event.inputs.proceed_to_build == true
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.build-layout.outputs.normalized_layout_geometry }}_${{ github.event.inputs.layout_id }}_${{ steps.build-layout.outputs.build_datetime_for_artifact }}
           path: ${{ steps.build-layout.outputs.built_layout_file }} # This path now points to the file with the date and time in its name
