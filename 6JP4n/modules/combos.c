@@ -3,7 +3,11 @@ const uint16_t PROGMEM cmb_lngsw_ru[] = { RU_GHE,         RU_SHA,         RU_SHC
 
 const uint16_t PROGMEM cmb_enter_gr[] = { KC_H,           KC_A,           KC_E, COMBO_END};
 const uint16_t PROGMEM cmb_enter_ru[] = { RU_O,           RU_EL,          RU_DE, COMBO_END};
-const uint16_t PROGMEM cmb_enter_tb[] = { KC_4,           KC_5,           KC_6, COMBO_END};
+const uint16_t PROGMEM cmb_minus_num[] = { KC_7,           KC_8,           KC_9, COMBO_END};
+const uint16_t PROGMEM cmb_plus_num[]  = { KC_4,           KC_5,           KC_6, COMBO_END};
+const uint16_t PROGMEM cmb_equal_num[] = { KC_1,           KC_2,           KC_3, COMBO_END};
+const uint16_t PROGMEM cmb_div_num[]   = { KC_4,           KC_5,           KC_6,           KC_DOT,   COMBO_END};
+const uint16_t PROGMEM cmb_mul_num[]   = { KC_1,           KC_2,           KC_3,           KC_EQUAL, COMBO_END};
 
 const uint16_t PROGMEM cmb_togg_gr[]  = { KC_N,           KC_S, COMBO_END};
 const uint16_t PROGMEM cmb_togg_ru[]  = { RU_EF,          RU_A, COMBO_END};
@@ -102,7 +106,11 @@ combo_t key_combos[] = {
 
     COMBO(cmb_enter_gr, KC_ENTER),
     COMBO(cmb_enter_ru, KC_ENTER),
-    COMBO(cmb_enter_tb, KC_ENTER),
+    COMBO(cmb_minus_num, KC_MINUS),
+    COMBO(cmb_plus_num, KC_EQUAL),
+    COMBO(cmb_equal_num, KC_PLUS),
+    COMBO(cmb_div_num, KC_SLASH),
+    COMBO(cmb_mul_num, KC_ASTR),
 
     COMBO(cmb_togg_gr, CW_TOGG),
     COMBO(cmb_togg_ru, CW_TOGG),
