@@ -5,11 +5,11 @@
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define AUTO_SHIFT_TIMEOUT 200
 #define NO_AUTO_SHIFT_NUMERIC
-#define SERIAL_NUMBER "6JP4n/pjxBrX"
+#define SERIAL_NUMBER "6JP4n/rbGaO4"
 #define LAYER_STATE_16BIT
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
-#define NAVIGATOR_TRACKPAD_ROTATION 260
+#define NAVIGATOR_TRACKPAD_ROTATION 318
 #define RGB_MATRIX_STARTUP_SPD 60
 
 #undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
