@@ -1,0 +1,24 @@
+{
+    "module_name": "custom_qmk",
+    "maintainer": "tpaktop77",
+    "features": {
+        "combo": true,
+        "os_detection": true
+    },
+    "keycodes": [
+        {"key": "LANG_SWITCH_COMBO_ACTION"},
+        {"key": "OS_AWARE_COPY"},
+        {"key": "OS_AWARE_PASTE"},
+        {"key": "OS_AWARE_CUT"},
+        {"key": "OS_AWARE_UNDO"},
+        {"key": "OS_AWARE_REDO"},
+        {"key": "OS_AWARE_VOICE"},
+        {"key": "ALT_TAB"},
+        {"key": "ALT_WIN"},
+        {"key": "SELECT_ALL"},
+        {"key": "WORD_PREV"},
+        {"key": "WORD_NEXT"},
+        {"key": "WORD_BS"},
+        {"key": "WORD_DEL"}
+    ]
+}

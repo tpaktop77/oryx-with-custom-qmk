@@ -122,7 +122,14 @@ jobs:
           # Copy layout files to the qmk folder
           rm -rf ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps/${{ github.event.inputs.layout_id }}
           mkdir -p ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps && cp -r ${{ github.event.inputs.layout_id }} "$_"
-          
+
+          # Inject custom QMK community modules into the build copy only (Oryx files in git stay untouched)
+          keymap_directory=${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps/${{ github.event.inputs.layout_id }}
+          cp -r modules/. qmk_firmware/modules/
+          [ -f ${keymap_directory}/keymap.json ] || echo '{}' > ${keymap_directory}/keymap.json
+          jq '.modules += ["tpak/custom_qmk"]' ${keymap_directory}/keymap.json > keymap.json.tmp
+          mv keymap.json.tmp ${keymap_directory}/keymap.json
+
           # Build the layout
           docker run -v ./qmk_firmware:/root --rm qmk /bin/sh -c "
             qmk setup zsa/qmk_firmware -b firmware${{ steps.download-layout-source.outputs.firmware_version }} -y
