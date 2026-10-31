@@ -33,10 +33,6 @@
 #define RU_HARD KC_RBRC
 #define RU_LPRN S(KC_9)
 #define RU_RPRN S(KC_0)
-#define RU_ASTR S(KC_8)
-#define RU_PERC S(KC_5)
-#define RU_RUBL ALGR(KC_8)
-#define RU_PLUS S(KC_EQL)
 #define RU_NUM S(KC_3)
 #define RU_UNDS S(KC_MINS)
 #define RU_MINS KC_MINS
@@ -49,4 +45,3 @@
 #define RU_DQUO S(KC_2)
 #define RU_COLN S(KC_6)
 #define RU_SCLN S(KC_4)
-#define RU_EQL KC_EQL
