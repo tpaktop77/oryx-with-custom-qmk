@@ -22,10 +22,6 @@ on:
           - planck_ez
           - planck_ez/glow
         default: voyager
-      custom_branch:
-        description: "Branch with custom QMK code to merge Oryx into and build (empty = branch the workflow runs from)"
-        required: false
-        default: ""
       #proceed_to_build:
       #  description: "Proceed with merge, build, and upload after updating oryx branch? (true/false)"
       #  type: boolean
@@ -39,7 +35,8 @@ jobs:
   fetch-and-build-layout:
     runs-on: ubuntu-latest
     env:
-      CUSTOM_BRANCH: ${{ github.event.inputs.custom_branch || github.ref_name }}
+      # Oryx changes are merged into and built from the branch selected in "Use workflow from"
+      CUSTOM_BRANCH: ${{ github.ref_name }}
 
     steps:
       - name: Checkout Repository
@@ -84,7 +81,7 @@ jobs:
         #if: github.event.inputs.proceed_to_build == true
         run: |
           if [ "${CUSTOM_BRANCH}" = "oryx" ]; then
-            echo "Error: custom_branch must not be the oryx branch"
+            echo "Error: run the workflow from main or a feature branch, not from oryx"
             exit 1
           fi
           git fetch origin "${CUSTOM_BRANCH}"
