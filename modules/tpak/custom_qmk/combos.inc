@@ -19,11 +19,9 @@ const uint16_t PROGMEM cmb_caps_ru[]  = { RU_EF,          RU_PE, COMBO_END};
 
 const uint16_t PROGMEM cmb_copy_gr[]  = { KC_R,           KC_L,     COMBO_END};
 const uint16_t PROGMEM cmb_copy_ru[]  = { RU_YERU,        RU_TSE,   COMBO_END};
-const uint16_t PROGMEM cmb_copy_tb[]  = { ST_MACRO_4,     ST_MACRO_1, COMBO_END};
 
 const uint16_t PROGMEM cmb_paste_gr[] = { KC_T,           KC_D,       COMBO_END};
 const uint16_t PROGMEM cmb_paste_ru[] = { RU_VE,          RU_U,       COMBO_END};
-const uint16_t PROGMEM cmb_paste_tb[] = { ST_MACRO_2,     ST_MACRO_5, COMBO_END};
 
 const uint16_t PROGMEM cmb_cut_gr[]   = { KC_R,  KC_L, KC_T, KC_D, COMBO_END};
 const uint16_t PROGMEM cmb_cut_ru[]   = { RU_YERU, RU_TSE, RU_VE,  RU_U, COMBO_END};
@@ -121,11 +119,9 @@ combo_t key_combos[] = {
 
     COMBO(cmb_copy_gr, OS_AWARE_COPY),
     COMBO(cmb_copy_ru, OS_AWARE_COPY),
-    COMBO(cmb_copy_tb, OS_AWARE_COPY),
 
     COMBO(cmb_paste_gr, OS_AWARE_PASTE),
     COMBO(cmb_paste_ru, OS_AWARE_PASTE),
-    COMBO(cmb_paste_tb, OS_AWARE_PASTE),
 
     COMBO(cmb_cut_gr, OS_AWARE_CUT),
     COMBO(cmb_cut_ru, OS_AWARE_CUT),
