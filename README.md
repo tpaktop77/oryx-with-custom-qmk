@@ -50,7 +50,7 @@ The module lives in [`modules/tpak/custom_qmk/`](modules/tpak/custom_qmk/):
 | `config.h` | Configures OS detection. |
 | `rules.mk` | Includes `combos.inc` through `INTROSPECTION_KEYMAP_C`, so QMK can count the combos alongside the generated keymap. |
 
-The module is configured for layout `6JP4n`: English and Russian use layers `0` and `1`; other combos refer to layers `6`, `9`, and `10`, Russian key aliases, and Oryx-generated `ST_MACRO_*` identifiers. Review these references when changing layers or macros in Oryx, or when using another layout.
+The module is configured for layout `6JP4n`: English and Russian use layers `0` and `1`; other combos refer to layers `6`, `9`, and `10` and Russian key aliases. Combos match keycodes, so avoid Oryx-generated `ST_MACRO_*` identifiers in them: Oryx renumbers macros when they are added or removed. Review these references when changing layers in Oryx, or when using another layout.
 
 Language switching sends `Ctrl+Shift+1` for English and `Ctrl+Shift+2` for Russian. Configure matching shortcuts on the host; [my_notes.md](my_notes.md) includes a Hammerspoon example for macOS.
 
